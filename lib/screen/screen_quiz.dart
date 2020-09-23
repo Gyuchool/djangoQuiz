@@ -1,4 +1,5 @@
 import 'package:app_test/model/model_quiz.dart';
+import 'package:app_test/screen/screen_result.dart';
 import 'package:app_test/widget/widget.candidate.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -82,7 +83,7 @@ class _QuizScreenState extends State<QuizScreen> {
             child: Container(),
           ),
           Column(
-            children: _buildCandidates(width, quiz), 
+            children: _buildCandidates(width, quiz),
           ),
           Container(
             padding: EdgeInsets.all(width * 0.024),
@@ -103,6 +104,15 @@ class _QuizScreenState extends State<QuizScreen> {
                       ? null
                       : () {
                           if (_currentIndex == widget.quizs.length - 1) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ResultScreen(
+                                  answers: _answers,
+                                  quizs: widget.quizs,
+                                ),
+                              ),
+                            );
                           } else {
                             _answerState = [false, false, false, false];
                             _currentIndex += 1;
@@ -123,19 +133,19 @@ class _QuizScreenState extends State<QuizScreen> {
     for (int i = 0; i < 4; i++) {
       _children.add(
         CandWidget(
-          text: quiz.candidates[i],
-          index: i,
-          width: width,
-          answerState: _answerState[i],
-          tap: () {
-            setState(() {
-              for (int j = 0; j < 4; j++) {
-                 if (j == i) {
-                   _answerState[j] = true;
-                   _answers[_currentIndex] = j;
-                 } else {
-                   _answerState[j] = false;
-                 }
+            text: quiz.candidates[i],
+            index: i,
+            width: width,
+            answerState: _answerState[i],
+            tap: () {
+              setState(() {
+                for (int j = 0; j < 4; j++) {
+                  if (j == i) {
+                    _answerState[j] = true;
+                    _answers[_currentIndex] = j;
+                  } else {
+                    _answerState[j] = false;
+                  }
                 }
               });
             }),
