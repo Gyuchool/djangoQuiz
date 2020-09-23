@@ -1,3 +1,5 @@
+import 'package:app_test/model/model_quiz.dart';
+import 'package:app_test/screen/screen_quiz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -6,9 +8,26 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> { //api호출할 영역
+class _HomeScreenState extends State<HomeScreen> {
+  //api호출할 영역
 
- 
+  List<Quiz> quiz = [
+    Quiz.fromMap({
+      'title': 'test',
+      'candidates': ['a', 'b', 'c', 'd'],
+      'answer': 0
+    }),
+    Quiz.fromMap({
+      'title': 'test',
+      'candidates': ['a', 'b', 'c', 'd'],
+      'answer': 0
+    }),
+    Quiz.fromMap({
+      'title': 'test',
+      'candidates': ['a', 'b', 'c', 'd'],
+      'answer': 0
+    }),
+  ];
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -60,20 +79,29 @@ class _HomeScreenState extends State<HomeScreen> { //api호출할 영역
               padding: EdgeInsets.only(bottom: width * 0.036),
               child: Center(
                 child: ButtonTheme(
-                    minWidth: width * 0.8,
-                    height: height * 0.05,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: RaisedButton(
-                      child: Text(
-                        '지금 퀴즈 풀기',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      color: Colors.deepPurple,
-                      onPressed: () {},
-                    ),
+                  minWidth: width * 0.8,
+                  height: height * 0.05,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
+                  child: RaisedButton(
+                    child: Text(
+                      '지금 퀴즈 풀기',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    color: Colors.deepPurple,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QuizScreen(
+                            quizs: quiz,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ),
             ),
           ],
