@@ -36,7 +36,7 @@ class _QuizScreenState extends State<QuizScreen> {
               width: width * 0.85,
               height: height * 0.5,
               child: Swiper(
-                  controller: _controller,  //!!!페이지 넘어가게 해주기
+                  controller: _controller, //!!!페이지 넘어가게 해주기
                   physics: NeverScrollableScrollPhysics(),
                   loop: false,
                   itemCount: widget.quizs.length,
@@ -104,7 +104,8 @@ class _QuizScreenState extends State<QuizScreen> {
                   onPressed: _answers[_currentIndex] == -1
                       ? null
                       : () {
-                          if (_currentIndex == widget.quizs.length - 1) { //마지막 화면 
+                          if (_currentIndex == widget.quizs.length - 1) {
+                            //마지막 화면
                             Navigator.push(
                               context,
                               MaterialPageRoute(
