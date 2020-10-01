@@ -34,7 +34,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 border: Border.all(color: Colors.deepPurple),
               ),
               width: width * 0.85,
-              height: height * 0.5,
+              height: height * 0.55,
               child: Swiper(
                   controller: _controller, //!!!페이지 넘어가게 해주기
                   physics: NeverScrollableScrollPhysics(),

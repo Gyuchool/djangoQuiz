@@ -38,7 +38,7 @@ class ResultScreen extends StatelessWidget {
                 color: Colors.deepPurple,
               ),
               width: width * 0.85,
-              height: height * 0.5,
+              height: height * 0.6,
               child: Column(
                 children: <Widget>[
                   Padding(
@@ -51,7 +51,7 @@ class ResultScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                     width: width * 0.73,
-                    height: height * 0.25,
+                    height: height * 0.35,
                     child: Column(
                       children: <Widget>[
                         Container(
